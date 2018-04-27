@@ -23,5 +23,20 @@ namespace dvcsharp_core_api
       {
          return _context.Users.ToList();
       }
+
+      [HttpDelete("{id}")]
+      public IActionResult Delete(int id)
+      {
+         User user = _context.Users.SingleOrDefault(m => m.ID == id);
+
+         if(user == null) {
+            return NotFound();
+         }
+
+         _context.Users.Remove(user);
+         _context.SaveChanges();
+
+         return Ok(user);
+      }
    }
 }

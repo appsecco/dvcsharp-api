@@ -31,7 +31,6 @@ namespace dvcsharp_core_api
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -41,7 +40,7 @@ namespace dvcsharp_core_api
 
             app.UseMvc();
             app.Run(async(context) => {
-                await context.Response.WriteAsync("Route not found!");
+                await context.Response.WriteAsync("DVCSharp API: Route not found!");
             });
         }
     }

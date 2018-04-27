@@ -26,6 +26,15 @@ namespace dvcsharp_core_api
             return BadRequest(ModelState);
          }
 
+         var exitingUser = _context.Users.
+            Where(b => b.email == registrationRequest.email).
+            FirstOrDefault();
+
+         if(exitingUser != null) {
+            ModelState.AddModelError("email", "Email address is already taken");
+            return BadRequest(ModelState);
+         }
+
          var user = new Models.User();
          user.name = registrationRequest.name;
          user.email = registrationRequest.email;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using dvcsharp_core_api.Models;
 using dvcsharp_core_api.Data;
 
@@ -18,12 +19,14 @@ namespace dvcsharp_core_api
          _context = context;
       }
 
+      [Authorize]
       [HttpGet]
       public IEnumerable<User> Get()
       {
          return _context.Users.ToList();
       }
 
+      [Authorize]
       [HttpDelete("{id}")]
       public IActionResult Delete(int id)
       {

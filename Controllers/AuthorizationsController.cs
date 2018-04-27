@@ -30,8 +30,7 @@ namespace dvcsharp_core_api
             authorizeCreateAccessToken(_context, authorizationRequest);
             
          if(response == null) {
-            ModelState.AddModelError("password", "Failed to authenticate");
-            return BadRequest(ModelState);
+            return Unauthorized();
          }
 
          return Ok(response);

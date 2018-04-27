@@ -14,6 +14,7 @@ namespace dvcsharp_core_api.Models
       public const string RoleUser = "User";
       public const string RoleSupport = "Support";
       public const string RoleAdministrator = "Administrator";
+      public const string TokenSecret = "f449a71cff1d56a122c84fa478c16af9075e5b4b8527787b56580773242e40ce";
 
       public int ID { get; set; }
 
@@ -24,7 +25,7 @@ namespace dvcsharp_core_api.Models
       [Required]
       public string role { get; set; }
       [Required]
-      //[System.Runtime.Serialization.IgnoreDataMember]
+      [System.Runtime.Serialization.IgnoreDataMember]
       public string password { get; set; }
       [Required]
       public DateTime createdAt { get; set; }
@@ -38,14 +39,14 @@ namespace dvcsharp_core_api.Models
 
       public string createAccessToken()
       {
-         string secret = "f449a71cff1d56a122c84fa478c16af9075e5b4b8527787b56580773242e40ce";
+         string secret = TokenSecret;
          string issuer = "http://localhost.local/";
          string audience = "http://localhost.local/";
 
          var claims = new[]
          {
-            new Claim(ClaimTypes.Name, this.email),
-            new Claim(ClaimTypes.Role, this.role)
+            new Claim("name", this.email),
+            new Claim("role", this.role)
          };
 
          var signingKey = new Microsoft.IdentityModel.
@@ -59,13 +60,12 @@ namespace dvcsharp_core_api.Models
             issuer: issuer,
             audience: audience,
             expires: DateTime.Now.AddMinutes(30),
+            claims: claims,
             signingCredentials: creds
          );
 
-         token.Payload.Add("email", this.email);
-         token.Payload.Add("role", this.role);
-
-         return (new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler().WriteToken(token));
+         return (new System.IdentityModel.Tokens.
+            Jwt.JwtSecurityTokenHandler().WriteToken(token));
       }
 
       private static string getHashedPassword(string password)

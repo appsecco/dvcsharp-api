@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using dvcsharp_core_api.Data;
 
 namespace dvcsharp_core_api
@@ -28,6 +31,28 @@ namespace dvcsharp_core_api
             services.AddDbContext<GenericDataContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                .Build());
+            });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.
+                            GetBytes(Models.User.TokenSecret))
+                    };
+                });
+
             services.AddMvc();
         }
 
@@ -38,7 +63,10 @@ namespace dvcsharp_core_api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CorsPolicy");
+            app.UseAuthentication();
             app.UseMvc();
+            
             app.Run(async(context) => {
                 await context.Response.WriteAsync("DVCSharp API: Route not found!");
             });

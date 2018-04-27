@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "DVCSharp Core API",
+		"_postman_id": "1982b191-a048-ce9d-f9a2-b0666ccc2877",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"url": "http://localhost:5000/api/registrations",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test User\",\n\t\"email\": \"newtest@test.com\",\n\t\"password\": \"test123\",\n\t\"passwordConfirmation\": \"test123\"\n}"
+				},
+				"description": "Register new user"
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"request": {
+				"url": "http://localhost:5000/api/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"url": "http://localhost:5000/api/users/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Delete user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Request",
+			"request": {
+				"url": "http://localhost:5000/api/authorizations",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test12311\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

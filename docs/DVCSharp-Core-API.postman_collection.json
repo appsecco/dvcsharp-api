@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "1982b191-a048-ce9d-f9a2-b0666ccc2877",
+		"name": "DVCSharp Core API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test User\",\n\t\"email\": \"newtest@test.com\",\n\t\"password\": \"test123\",\n\t\"passwordConfirmation\": \"test123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/registrations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"registrations"
+					]
+				},
+				"description": "Register new user"
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/api/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				},
+				"description": "Delete user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test12311\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/authorizations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"authorizations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

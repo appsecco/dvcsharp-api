@@ -18,6 +18,12 @@ Start application server:
 dotnet run
 ```
 
+Start application server with watcher:
+
+```
+dotnet watch run
+```
+
 ## Vulnerabilities
 
 

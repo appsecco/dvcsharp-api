@@ -32,3 +32,4 @@ dotnet watch run
 
 * Authentication is custom. It should be replaced with Identity Framework
 * Hardcoded JWT secret and other validation info
+* Weak password reset - same as DVJA

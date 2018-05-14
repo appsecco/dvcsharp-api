@@ -48,6 +48,7 @@ namespace dvcsharp_core_api
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         ValidateIssuerSigningKey = true,
+                        SaveSigninToken = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.
                             GetBytes(Models.User.TokenSecret))
                     };

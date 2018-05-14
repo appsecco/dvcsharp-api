@@ -11,9 +11,10 @@ using System;
 namespace dvcsharpcoreapi.Migrations
 {
     [DbContext(typeof(GenericDataContext))]
-    partial class GenericDataContextModelSnapshot : ModelSnapshot
+    [Migration("20180514042927_AddPasswordRestRequest")]
+    partial class AddPasswordRestRequest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

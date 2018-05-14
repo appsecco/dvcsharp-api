@@ -26,11 +26,11 @@ namespace dvcsharp_core_api
             return BadRequest(ModelState);
          }
 
-         var exitingUser = _context.Users.
+         var existingUser = _context.Users.
             Where(b => b.email == registrationRequest.email).
             FirstOrDefault();
 
-         if(exitingUser != null) {
+         if(existingUser != null) {
             ModelState.AddModelError("email", "Email address is already taken");
             return BadRequest(ModelState);
          }

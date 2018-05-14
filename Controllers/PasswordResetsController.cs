@@ -19,6 +19,46 @@ namespace dvcsharp_core_api
          _context = context;
       }
 
+      [HttpPut]
+      public IActionResult Put([FromBody] PasswordResetRequest passwordResetRequest)
+      {
+         if(String.IsNullOrEmpty(passwordResetRequest.key)) {
+            ModelState.AddModelError("key", "Key is required for password reset");
+            return BadRequest(ModelState);
+         }
+
+         if(String.IsNullOrEmpty(passwordResetRequest.password) || 
+            String.IsNullOrEmpty(passwordResetRequest.passwordConfirmation)) {
+               ModelState.AddModelError("password", "Password is required");
+               ModelState.AddModelError("passwordConfirmation", "Password confirmation is required");
+               return BadRequest(ModelState);
+         }
+
+         if(passwordResetRequest.password != passwordResetRequest.passwordConfirmation) {
+            ModelState.AddModelError("password", "Password must match password confirmation");
+            return BadRequest(ModelState);
+         }
+
+         var resetRequest = _context.PasswordResetRequests.
+            Where(b => b.key == passwordResetRequest.key).FirstOrDefault();
+
+         if(resetRequest == null) {
+            ModelState.AddModelError("key", "Key not found in system");
+            return BadRequest(ModelState);
+         }
+
+         var existingUser = _context.Users.
+            Where(b => b.email == resetRequest.email).
+            FirstOrDefault();
+
+         existingUser.updatePassword(passwordResetRequest.password);
+
+         _context.Users.Update(existingUser);
+         _context.SaveChanges();
+
+         return Ok("Password updated successfully for userId: " + existingUser.ID.ToString());
+      }
+
       [HttpPost]
       public IActionResult Post([FromBody] PasswordResetRequest passwordResetRequest)
       {
@@ -31,7 +71,7 @@ namespace dvcsharp_core_api
             Where(b => b.email == passwordResetRequest.email).
             FirstOrDefault();
 
-         if(exitingUser != null) {
+         if(exitingUser == null) {
             ModelState.AddModelError("email", "Email address does not exist");
             return BadRequest(ModelState);
          }
@@ -43,7 +83,7 @@ namespace dvcsharp_core_api
          _context.PasswordResetRequests.Add(passwordResetRequest);
          _context.SaveChanges();
 
-         return Ok();
+         return Ok("An email with password reset link has been sent.");
       }
    }
 }

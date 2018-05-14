@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using dvcsharp_core_api.Models;
@@ -40,6 +41,23 @@ namespace dvcsharp_core_api
          _context.SaveChanges();
 
          return Ok(user);
+      }
+
+      [Authorize]
+      [HttpGet("import")]
+      public async Task<IActionResult> Import()
+      {
+         HttpClient client = new HttpClient();
+         var url = HttpContext.Request.Query["url"].ToString();
+
+         //Console.WriteLine("URL: " + url);
+         HttpResponseMessage response = await client.GetAsync(url);
+         response.EnsureSuccessStatusCode();
+         string responseBody = await response.Content.ReadAsStringAsync();
+
+         // TODO: Parse JSON and import users
+
+         return Ok(responseBody);
       }
    }
 }

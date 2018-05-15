@@ -45,7 +45,7 @@ namespace dvcsharp_core_api
          _context.Users.Add(user);
          _context.SaveChanges();
 
-         return Ok();
+         return Ok(user);
       }
    }
 }

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using dvcsharp_core_api.Models;
 using dvcsharp_core_api.Data;
@@ -18,6 +21,12 @@ namespace dvcsharp_core_api
          _context = context;
       }
 
+      [HttpGet]
+      public IEnumerable<Product> Get()
+      {
+         return _context.Products.ToList();
+      }
+
       [HttpPost]
       public IActionResult Post([FromBody] Product product)
       {
@@ -26,19 +35,44 @@ namespace dvcsharp_core_api
             return BadRequest(ModelState);
          }
 
-         return Ok();
+         var existingProduct = _context.Products.
+            Where(b => (b.name == product.name) || (b.skuId == product.skuId)).
+            FirstOrDefault();
+         
+         if(existingProduct != null) {
+            ModelState.AddModelError("name", "Product name or skuId is already taken");
+            return BadRequest(ModelState);
+         }
+
+         _context.Products.Add(product);
+         _context.SaveChanges();
+
+         return Ok(product);
       }
 
       [HttpGet("export")]
-      public IActionResult Export()
+      public void Export()
       {
-         return NotFound();
+         XmlRootAttribute root = new XmlRootAttribute("Entities");
+         XmlSerializer serializer = new XmlSerializer(typeof(Product[]), root);
+
+         Response.ContentType = "application/xml";
+         serializer.Serialize(HttpContext.Response.Body, _context.Products.ToArray());
       }
 
       [HttpPost("import")]
       public IActionResult Import()
       {
-         return NotFound();
+         XmlReader reader = XmlReader.Create(HttpContext.Request.Body);
+         XmlRootAttribute root = new XmlRootAttribute("Entities");
+         XmlSerializer serializer = new XmlSerializer(typeof(Product[]), root);
+
+         var entities = (Product[]) serializer.Deserialize(reader);
+         reader.Close();
+
+         // TODO: Import products into DB
+
+         return Ok(entities);
       }
    }
 }

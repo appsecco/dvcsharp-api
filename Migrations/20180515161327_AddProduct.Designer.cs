@@ -11,9 +11,10 @@ using System;
 namespace dvcsharpcoreapi.Migrations
 {
     [DbContext(typeof(GenericDataContext))]
-    partial class GenericDataContextModelSnapshot : ModelSnapshot
+    [Migration("20180515161327_AddProduct")]
+    partial class AddProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

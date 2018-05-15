@@ -5,7 +5,7 @@ namespace dvcsharp_core_api.Models
 {
    public class Product
    {
-      int ID { get; set; }
+      public int ID { get; set; }
 
       [StringLength(60)]
       [Required]

@@ -34,3 +34,4 @@ dotnet watch run
 * Hardcoded JWT secret and other validation info
 * Weak password reset - same as DVJA
    * The reset link is never invalidated
+* SSRF in Users import

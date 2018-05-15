@@ -50,7 +50,6 @@ namespace dvcsharp_core_api
          HttpClient client = new HttpClient();
          var url = HttpContext.Request.Query["url"].ToString();
 
-         //Console.WriteLine("URL: " + url);
          HttpResponseMessage response = await client.GetAsync(url);
          response.EnsureSuccessStatusCode();
          string responseBody = await response.Content.ReadAsStringAsync();

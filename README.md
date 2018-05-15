@@ -39,3 +39,8 @@ dotnet watch run
    * Any user can elevate role to admin
    * Any user can reset other's credential
 
+
+TODO:
+   * Implement products model / CRUD
+   * Implement product export using Xml Serializer (refer HackIM pwnable)
+   * Implement serialization vulnerability in Product import

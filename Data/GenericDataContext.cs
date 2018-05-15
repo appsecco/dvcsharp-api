@@ -11,5 +11,6 @@ namespace dvcsharp_core_api.Data
 
       public DbSet<User> Users { get; set; }
       public DbSet<PasswordResetRequest> PasswordResetRequests { get; set; }
+      public DbSet<Product> Products { get; set; }
    }
 }

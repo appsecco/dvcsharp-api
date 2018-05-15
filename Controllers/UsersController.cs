@@ -28,6 +28,30 @@ namespace dvcsharp_core_api
       }
 
       [Authorize]
+      [HttpPut("{id}")]
+      public IActionResult Put(int id, [FromBody] Models.UserUpdateRequest user)
+      {
+         if(!ModelState.IsValid) {
+            return BadRequest(ModelState);
+         }
+
+         var existingUser = _context.Users.SingleOrDefault(m => m.ID == id);
+         if(existingUser == null) {
+            return NotFound();
+         }
+
+         existingUser.name = user.name;
+         existingUser.email = user.email;
+         existingUser.role = user.role;
+         existingUser.updatePassword(user.password);
+
+         _context.Users.Update(existingUser);
+         _context.SaveChanges();
+
+         return Ok(existingUser);
+      }
+
+      [Authorize]
       [HttpDelete("{id}")]
       public IActionResult Delete(int id)
       {

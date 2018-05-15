@@ -35,3 +35,7 @@ dotnet watch run
 * Weak password reset - same as DVJA
    * The reset link is never invalidated
 * SSRF in Users import
+* Authorization issue in User update in user controller/put method
+   * Any user can elevate role to admin
+   * Any user can reset other's credential
+

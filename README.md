@@ -38,9 +38,5 @@ dotnet watch run
 * Authorization issue in User update in user controller/put method
    * Any user can elevate role to admin
    * Any user can reset other's credential
-
-
-TODO:
-   * Implement products model / CRUD
-   * Implement product export using Xml Serializer (refer HackIM pwnable)
-   * Implement serialization vulnerability in Product import
+* XML serialization - unsafe (ysoserial)
+   * Products controler import/export

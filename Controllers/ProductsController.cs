@@ -70,8 +70,6 @@ namespace dvcsharp_core_api
          var entities = (Product[]) serializer.Deserialize(reader);
          reader.Close();
 
-         // TODO: Import products into DB
-
          return Ok(entities);
       }
    }

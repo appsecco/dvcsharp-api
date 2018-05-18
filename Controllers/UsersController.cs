@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json.Linq;
 using dvcsharp_core_api.Models;
 using dvcsharp_core_api.Data;
 
@@ -74,13 +75,29 @@ namespace dvcsharp_core_api
          HttpClient client = new HttpClient();
          var url = HttpContext.Request.Query["url"].ToString();
 
-         HttpResponseMessage response = await client.GetAsync(url);
-         response.EnsureSuccessStatusCode();
-         string responseBody = await response.Content.ReadAsStringAsync();
+         string responseBody = null;
+         string errorMsg = "Success";
 
-         // TODO: Parse JSON and import users
+         try {
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            responseBody = await response.Content.ReadAsStringAsync();
 
-         return Ok(responseBody);
+            MockUserImport(responseBody);
+         }
+         catch(Exception e) {
+            errorMsg = e.Message;
+         }
+
+         return Ok(new JObject(
+            new JProperty("Error", errorMsg),
+            new JProperty("Content", responseBody)
+         ));
+      }
+
+      private void MockUserImport(string data)
+      {
+         // Mock
       }
    }
 }

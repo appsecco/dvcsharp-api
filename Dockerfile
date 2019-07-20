@@ -12,4 +12,4 @@ RUN dotnet restore \
 
 EXPOSE 5000
 
-ENTRYPOINT ["dotnet", "watch", "run"]
+CMD ["dotnet", "watch", "run"]

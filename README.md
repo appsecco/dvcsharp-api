@@ -1,6 +1,14 @@
-# Damn Vulnerable CSharp: Core API
+# Damn Vulnerable C# Application (API Only)
 
 ## Getting Started
+
+### Docker
+
+```
+docker-compose up
+```
+
+### Manual
 
 Install .NET Core 2.x SDK
 [Microsoft .NET Core SDK](https://www.microsoft.com/net/download/macos)
@@ -18,20 +26,11 @@ Start application server:
 dotnet run
 ```
 
-Start application server with watcher:
+Start application server with watcher for auto-reload on change:
 
 ```
 dotnet watch run
 ```
-
-## Vulnerabilities
-
-Documented in `dvcsharp-book`
-
-## Fixes
-
-Document in `dvcsharp-book`
-
 
 ## Build Docker
 
@@ -46,3 +45,9 @@ docker build -t appsecco/dvcsharp .
 ```bash
 docker run -d --name dvcsharp -it -p 5000:5000 appsecco/dvcsharp
 ```
+
+## Solution
+
+TBD
+
+

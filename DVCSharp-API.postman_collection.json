@@ -339,6 +339,32 @@
 			"response": []
 		},
 		{
+			"name": "Search Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/products/export",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Import Products",
 			"request": {
 				"method": "POST",
@@ -425,6 +451,38 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdDFAdGVzdC5jb20iLCJyb2xlIjoiVXNlciIsImV4cCI6MTU2NDA2NDgyNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC5sb2NhbC8iLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0LmxvY2FsLyJ9.CblEHNbmxUYVgZhGRkon6GC4julL7WtZtKF-yIRMh1A",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ea77644c-558c-4f74-baee-3f9b7f428bf0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "900d984f-0d66-4b9b-b52b-37ebf5c2241c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

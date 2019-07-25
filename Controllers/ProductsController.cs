@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using dvcsharp_core_api.Models;
 using dvcsharp_core_api.Data;
 
@@ -58,6 +59,21 @@ namespace dvcsharp_core_api
 
          Response.ContentType = "application/xml";
          serializer.Serialize(HttpContext.Response.Body, _context.Products.ToArray());
+      }
+
+      [HttpGet("search")]
+      public IActionResult Search(string keyword)
+      {
+         if (String.IsNullOrEmpty(keyword)) {
+            return Ok("Cannot search without a keyword");
+         }
+
+         var query = $"SELECT * From Products WHERE name LIKE '%{keyword}%' OR description LIKE '%{keyword}%'";
+         var products = _context.Products
+            .FromSql(query)
+            .ToList();
+
+         return Ok(products);
       }
 
       [HttpPost("import")]

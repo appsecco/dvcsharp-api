@@ -1,0 +1,9 @@
+- description: "CodeQL External API Suite"
+
+- import: codeql-suites/csharp-security-extended.qls
+  from: codeql-csharp
+
+- qlpack: codeql-csharp
+- include:
+    id:
+      - csharp/untrusted-data-to-external-api

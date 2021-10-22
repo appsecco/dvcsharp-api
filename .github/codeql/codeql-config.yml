@@ -1,1 +1,9 @@
+name: "CodeQL External API Configuration"
 
+# This disabled all other queries except for the ones defined in this
+#  configuration file.
+disable-default-queries: true
+
+queries:
+  # Query Suite
+  - uses: ./.github/codeql/external-api.qls

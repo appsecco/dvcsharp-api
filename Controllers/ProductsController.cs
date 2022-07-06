@@ -73,7 +73,12 @@ namespace dvcsharp_core_api
             .FromSql(query)
             .ToList();
 
-         return Ok(products);
+        var query2 = $"SELECT * From Products WHERE name LIKE '%{keyword}%' OR description LIKE '%{keyword}%'";
+        var products2 = _context.Products
+            .FromSql(query)
+            .ToList();
+
+        return Ok(products);
       }
 
       [HttpPost("import")]

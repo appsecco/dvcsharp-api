@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dvcsharp-core-api", "dvcsharp-core-api.csproj", "{9027C84B-E1F8-4293-8C16-D44B696F75F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9027C84B-E1F8-4293-8C16-D44B696F75F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9027C84B-E1F8-4293-8C16-D44B696F75F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9027C84B-E1F8-4293-8C16-D44B696F75F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9027C84B-E1F8-4293-8C16-D44B696F75F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00A9B062-3BE6-4B5A-B32F-21CC4E4C8B80}
+	EndGlobalSection
+EndGlobal

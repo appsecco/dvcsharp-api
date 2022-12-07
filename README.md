@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+**Note:** This is a deliberately vulnerable app, please do not host it on production or Internet/public facing servers. Use with caution.
+
 ### Docker
 
 ```
@@ -48,6 +50,4 @@ docker run -d --name dvcsharp -it -p 5000:5000 appsecco/dvcsharp
 
 ## Solution
 
-TBD
-
-
+The [documentation-dvcsharp-book](./documentation-dvcsharp-book) folder has instructions to use the app and exploit vulnerabilities that have been programmed.

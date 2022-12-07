@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "1982b191-a048-ce9d-f9a2-b0666ccc2877",
+		"name": "DVCSharp Core API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test User\",\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test123\",\n\t\"passwordConfirmation\": \"test123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/registrations",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"registrations"
+					]
+				},
+				"description": "Register new user"
+			},
+			"response": []
+		},
+		{
+			"name": "List Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVc2VyIiwiZXhwIjoxNTI2MzgwMzYxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0LmxvY2FsLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QubG9jYWwvIn0.5ZejCtXrq2vZJJQQxQn2GJ9aeZ2OEi8wuuia6fAAR1Q"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVc2VyIiwiZXhwIjoxNTI2MzgwMzYxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0LmxvY2FsLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QubG9jYWwvIn0.5ZejCtXrq2vZJJQQxQn2GJ9aeZ2OEi8wuuia6fAAR1Q"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Updated User\",\n\t\"email\": \"updated@updated.com\",\n\t\"password\": \"newpassword\",\n\t\"passwordConfirmation\": \"newpassword\",\n\t\"role\": \"Administrator\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/1",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVc2VyIiwiZXhwIjoxNTI2Mjg3MTMxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0LmxvY2FsLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QubG9jYWwvIn0.5OOoWWZU26AmHlKOVgbhsQBoJVHQ0h_a0Eli6gfx5jM"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http:/localhost:5000/api/users/import?url=http://ifconfig.co",
+					"host": [
+						"http:"
+					],
+					"port": "",
+					"path": [
+						"localhost:5000",
+						"api",
+						"users",
+						"import"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "http://ifconfig.co"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInJvbGUiOiJVc2VyIiwiZXhwIjoxNTI2MzgwMzYxLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0LmxvY2FsLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3QubG9jYWwvIn0.5ZejCtXrq2vZJJQQxQn2GJ9aeZ2OEi8wuuia6fAAR1Q"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/api/tokens/tokenInfo",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tokens",
+						"tokenInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000/api/users/1",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"1"
+					]
+				},
+				"description": "Delete user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/authorizations",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"authorizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization Request SSO",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "sso_ctx=eyAiYXV0aF91c2VyIjogIjgiIH0K"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/authorizations/GetTokenSSO",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"authorizations",
+						"GetTokenSSO"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Reset Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/passwordresets",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"passwordresets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Password Reset",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\": \"b642b4217b34b1e8d3bd915fc65c4452\",\n\t\"password\": \"password123\",\n\t\"passwordConfirmation\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/passwordresets",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"passwordresets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\": \"b642b4217b34b1e8d3bd915fc65c4452\",\n\t\"password\": \"password123\",\n\t\"passwordConfirmation\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\": \"b642b4217b34b1e8d3bd915fc65c4452\",\n\t\"password\": \"password123\",\n\t\"passwordConfirmation\": \"password123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products/export",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import Products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\n<Entities xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Product>\n        <ID>1</ID>\n        <name>Test Product 1</name>\n        <description>Test Product Description</description>\n        <skuId>PROD-001</skuId>\n        <unitPrice>0</unitPrice>\n    </Product>\n    <Product>\n        <ID>2</ID>\n        <name>Test Product 11</name>\n        <description>Test Product Description</description>\n        <skuId>PROD-0011</skuId>\n        <unitPrice>100</unitPrice>\n    </Product>\n</Entities>"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products/import",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test Product 11\",\n\t\"description\": \"Test Product Description\",\n\t\"skuId\": \"PROD-0011\",\n\t\"unitPrice\": 100\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generic Entity Import",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\"?>\n<Entities xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n    <Entity Type=\"dvcsharp_core_api.Models.Product\">\n    \t<Product>\n\t        <name>Test Product 1</name>\n\t        <description>Test Product Description</description>\n\t        <skuId>PROD-001</skuId>\n\t        <unitPrice>0</unitPrice>\n        </Product>\n    </Entity>\n    <Entity Type=\"dvcsharp_core_api.Models.Product\">\n    \t<Product>\n        \t<name>Test Product 11</name>\n        \t<description>Test Product Description</description>\n        \t<skuId>PROD-0011</skuId>\n        \t<unitPrice>100</unitPrice>\n        </Product>\n    </Entity>\n</Entities>"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/imports",
+					"protocol": "http",
+					"host": [
+						"rws",
+						"local"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"imports"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

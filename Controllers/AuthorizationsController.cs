@@ -40,7 +40,8 @@ namespace dvcsharp_core_api
       [HttpGet("GetTokenSSO")]
       public IActionResult GetTokenSSO()
       {
-         var ssoCookieData = HttpContext.Request.Cookies["sso_ctx"];
+         //var ssoCookieData = HttpContext.Request.Cookies["sso_ctx"];
+         HttpCookie ssoCookieData = new HttpCookie(HttpContext.Request.Cookies["sso_ctx"]);
 
          if(String.IsNullOrEmpty(ssoCookieData)) {
             return Unauthorized();

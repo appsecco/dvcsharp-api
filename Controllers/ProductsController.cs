@@ -62,7 +62,7 @@ namespace dvcsharp_core_api
       }
 
       [HttpGet("search")]
-      public IActionResult Search(string keywords)
+      public IActionResult Search(string keyword)
       {
          if (String.IsNullOrEmpty(keyword)) {
             return Ok("Cannot search without a keyword");

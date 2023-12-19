@@ -17,4 +17,5 @@ jobs:
           base_uri: https://eu.ast.checkmarx.net/
           cx_client_id: ${{ secrets.AST }}
           cx_client_secret: ${{ secrets.ASTSECRET }}
-          additional_params: --threshold "sast-high=1; sca-high=1"
+          ## additional_params: --apikey ${{ secrets.API_KEY }}
+          additional_params: --threshold sast-high=1

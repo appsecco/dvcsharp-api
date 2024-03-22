@@ -36,7 +36,8 @@ namespace dvcsharp_core_api
             return BadRequest(ModelState);
          }
 
-         var existingUser = _context.Users.SingleOrDefault(m => m.ID == id);
+         //var existingUser = _context.Users.SingleOrDefault(m => m.ID == id);
+         var existingUser = _context.Users.GetById(id);
          if(existingUser == null) {
             return NotFound();
          }

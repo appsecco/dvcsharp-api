@@ -1,0 +1,21 @@
+name: Checkmarx One Scan
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: ${{ github.repository }}
+          cx_tenant: bradesco-poc
+          base_uri: https://deu.ast.checkmarx.net/
+          cx_client_id: ${{ secrets.CANARY_OATH }}
+          cx_client_secret: ${{ secrets.CANARY_SECRET }}
+          ## additional_params: --apikey ${{ secrets.API_KEY }}
+          ##additional_params: --threshold sast-high=1
